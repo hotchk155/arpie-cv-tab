@@ -9051,9 +9051,9 @@ Metric Code Size 5664</description>
 <approved hash="101,1,134.62,96.52,VCC1,1,,,,"/>
 <approved hash="101,1,134.62,104.14,VCC2,1,,,,"/>
 <approved hash="101,1,152.4,149.86,GND1,1,,,,"/>
-<approved hash="104,1,220.98,93.98,IC1P,VCC,+5V,,,"/>
-<approved hash="104,1,271.78,10.16,U$6,VSS,GND,,,"/>
-<approved hash="104,1,271.78,7.62,U$6,VDD,+5V,,,"/>
+<approved hash="104,1,220.98,93.98,IC2P,VCC,+5V,,,"/>
+<approved hash="104,1,271.78,10.16,IC1,VSS,GND,,,"/>
+<approved hash="104,1,271.78,7.62,IC1,VDD,+5V,,,"/>
 <approved hash="113,1,85.6301,149.86,LD3,,,,,"/>
 <approved hash="113,1,85.5031,142.24,LD2,,,,,"/>
 <approved hash="113,1,64.9064,149.86,ENA,,,,,"/>
@@ -9080,13 +9080,12 @@ Metric Code Size 5664</description>
 <approved hash="113,1,190.221,148.459,PB3,,,,,"/>
 <approved hash="113,1,152.637,105.541,GND,,,,,"/>
 <approved hash="113,1,134.857,113.161,VCC,,,,,"/>
-<approved hash="113,1,121.787,27.6183,GATE_LED,,,,,"/>
 <approved hash="113,1,120.895,42.8583,CLK_LED,,,,,"/>
-<approved hash="113,1,146.05,-1.18196,C3,,,,,"/>
-<approved hash="113,1,146.05,6.7513,C2,,,,,"/>
+<approved hash="113,1,121.787,27.6183,GATE_LED,,,,,"/>
+<approved hash="113,1,146.05,6.7513,C1,,,,,"/>
 <approved hash="113,1,255.671,80.01,C4,,,,,"/>
-<approved hash="113,1,255.671,54.61,C5,,,,,"/>
-<approved hash="113,1,265.029,1.27,C1,,,,,"/>
+<approved hash="113,1,255.671,54.61,C3,,,,,"/>
+<approved hash="113,1,265.029,1.27,C2,,,,,"/>
 </errors>
 </schematic>
 </drawing>
