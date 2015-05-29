@@ -674,9 +674,8 @@
 <rectangle x1="71.1327" y1="53.0733" x2="71.5899" y2="53.1495" layer="51"/>
 <rectangle x1="71.6661" y1="53.0733" x2="72.0471" y2="53.1495" layer="51"/>
 <rectangle x1="71.3613" y1="53.1495" x2="71.5137" y2="53.2257" layer="51"/>
-<text x="75.7936" y="37.719" size="1.778" layer="25" font="vector" rot="R90">for ARPIE</text>
-<text x="77.2414" y="47.3202" size="1.4224" layer="25" font="vector" rot="R90">rev 1</text>
-<text x="75.0824" y="6.6548" size="1.27" layer="25" font="vector" rot="R180">hotchk155</text>
+<text x="74.9554" y="48.0822" size="1.4224" layer="25" font="vector" rot="R90">rev 1</text>
+<text x="61.2902" y="16.9164" size="1.27" layer="25" font="vector" rot="R270">hotchk155</text>
 </plain>
 <libraries>
 <library name="adafruit">
