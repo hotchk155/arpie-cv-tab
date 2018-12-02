@@ -15175,6 +15175,192 @@ Source: http://onsemi.com .. MBR0520LT1-D.pdf</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="texas">
+<description>&lt;b&gt;Texas Instruments Devices&lt;/b&gt;&lt;p&gt;
+ &lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
+<packages>
+<package name="DBZ_R-PDSO-G3">
+<description>&lt;b&gt;DBZ (R-PDSO-G3)&lt;/b&gt; SOT-23&lt;p&gt;
+Source: http://focus.ti.com/lit/ds/slcs146e/slcs146e.pdf</description>
+<wire x1="-1.973" y1="1.983" x2="1.973" y2="1.983" width="0.0508" layer="39"/>
+<wire x1="1.973" y1="-1.983" x2="-1.973" y2="-1.983" width="0.0508" layer="39"/>
+<wire x1="-1.973" y1="-1.983" x2="-1.973" y2="1.983" width="0.0508" layer="39"/>
+<wire x1="1.973" y1="1.983" x2="1.973" y2="-1.983" width="0.0508" layer="39"/>
+<wire x1="1.422" y1="0.66" x2="1.422" y2="-0.66" width="0.1524" layer="51"/>
+<wire x1="1.422" y1="-0.66" x2="-1.422" y2="-0.66" width="0.1524" layer="51"/>
+<wire x1="-1.422" y1="-0.66" x2="-1.422" y2="0.66" width="0.1524" layer="51"/>
+<wire x1="-1.422" y1="0.66" x2="1.422" y2="0.66" width="0.1524" layer="51"/>
+<smd name="3" x="0" y="1.1" dx="0.7" dy="1" layer="1"/>
+<smd name="2" x="0.95" y="-1.1" dx="0.7" dy="1" layer="1"/>
+<smd name="1" x="-0.95" y="-1.1" dx="0.7" dy="1" layer="1"/>
+<text x="-1.905" y="1.905" size="1.27" layer="25">&gt;NAME</text>
+<text x="-1.905" y="-3.175" size="1.27" layer="27">&gt;VALUE</text>
+<rectangle x1="-0.2286" y1="0.7112" x2="0.2286" y2="1.2954" layer="51"/>
+<rectangle x1="0.7112" y1="-1.2954" x2="1.1684" y2="-0.7112" layer="51"/>
+<rectangle x1="-1.1684" y1="-1.2954" x2="-0.7112" y2="-0.7112" layer="51"/>
+<rectangle x1="-0.5001" y1="-0.3" x2="0.5001" y2="0.3" layer="35"/>
+</package>
+<package name="DCK_R-PDSO-G5">
+<description>&lt;b&gt;DCK (R-PDSO-G5)&lt;/b&gt; SC-70&lt;p&gt;
+Source: http://focus.ti.com/lit/ds/slcs146e/slcs146e.pdf</description>
+<wire x1="0.975" y1="-0.6" x2="-0.975" y2="-0.6" width="0.2032" layer="51"/>
+<wire x1="-0.975" y1="-0.6" x2="-0.975" y2="0.6" width="0.2032" layer="21"/>
+<wire x1="-0.975" y1="0.6" x2="0.975" y2="0.6" width="0.2032" layer="51"/>
+<wire x1="0.975" y1="0.6" x2="0.975" y2="-0.6" width="0.2032" layer="21"/>
+<smd name="4" x="0.65" y="0.95" dx="0.35" dy="0.8" layer="1"/>
+<smd name="5" x="-0.65" y="0.95" dx="0.35" dy="0.8" layer="1"/>
+<smd name="1" x="-0.65" y="-0.95" dx="0.35" dy="0.8" layer="1"/>
+<smd name="2" x="0" y="-0.95" dx="0.35" dy="0.8" layer="1"/>
+<smd name="3" x="0.65" y="-0.95" dx="0.35" dy="0.8" layer="1"/>
+<text x="-1.27" y="1.397" size="1.016" layer="25">&gt;NAME</text>
+<text x="-1.27" y="-2.54" size="1.016" layer="27">&gt;VALUE</text>
+<rectangle x1="0.5" y1="0.675" x2="0.8" y2="1.2" layer="51"/>
+<rectangle x1="-0.8" y1="0.675" x2="-0.5" y2="1.2" layer="51"/>
+<rectangle x1="-0.8" y1="-1.2" x2="-0.5" y2="-0.675" layer="51"/>
+<rectangle x1="-0.15" y1="-1.2" x2="0.15" y2="-0.675" layer="51"/>
+<rectangle x1="0.5" y1="-1.2" x2="0.8" y2="-0.675" layer="51"/>
+<rectangle x1="-1.016" y1="-0.508" x2="-0.127" y2="0" layer="21"/>
+</package>
+<package name="LP_O-PBCY-W3">
+<description>&lt;b&gt;LP (O-PBCY-W3)&lt;/b&gt; TO-92/TO-226&lt;p&gt;
+Source: http://focus.ti.com/lit/ds/slcs146e/slcs146e.pdf</description>
+<wire x1="-2.1" y1="-1.5" x2="2.1" y2="-1.5" width="0.2032" layer="51" curve="-250.988591"/>
+<wire x1="-2.1" y1="-1.5" x2="2.1" y2="-1.5" width="0.2032" layer="21"/>
+<wire x1="-2.1" y1="-1.5" x2="-2.4" y2="-0.95" width="0.2032" layer="21" curve="-16.054475"/>
+<wire x1="-2.425" y1="0.875" x2="2.425" y2="0.875" width="0.2032" layer="21" curve="-140.126391"/>
+<wire x1="2.1" y1="-1.5" x2="2.4" y2="-0.95" width="0.2032" layer="21" curve="16.054475"/>
+<pad name="3" x="2.54" y="0" drill="0.8" diameter="1.4"/>
+<pad name="2" x="0" y="0" drill="0.8" diameter="1.4"/>
+<pad name="1" x="-2.54" y="0" drill="0.8" diameter="1.4"/>
+<text x="-2.159" y="-3.556" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<text x="-2.54" y="2.794" size="1.27" layer="27" ratio="10">&gt;VALUE</text>
+</package>
+</packages>
+<symbols>
+<symbol name="LM4041">
+<wire x1="1.27" y1="1.905" x2="1.27" y2="1.524" width="0.254" layer="94"/>
+<wire x1="1.27" y1="1.524" x2="0" y2="1.524" width="0.254" layer="94"/>
+<wire x1="0" y1="1.524" x2="-1.27" y2="1.524" width="0.254" layer="94"/>
+<wire x1="-1.27" y1="1.524" x2="-1.27" y2="1.143" width="0.254" layer="94"/>
+<text x="2.794" y="1.905" size="1.778" layer="95">&gt;NAME</text>
+<text x="2.794" y="-0.889" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="A" x="0" y="-2.54" visible="off" length="short" direction="pas" rot="R90"/>
+<pin name="C" x="0" y="2.54" visible="off" length="short" direction="pas" rot="R270"/>
+<polygon width="0.254" layer="94">
+<vertex x="0" y="1.524"/>
+<vertex x="-1.27" y="-0.762"/>
+<vertex x="1.27" y="-0.762"/>
+</polygon>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="LM4041" prefix="IC">
+<description>&lt;b&gt;PRECISION MICROPOWER SHUNT VOLTAGE REFERENCE&lt;/b&gt;&lt;p&gt;
+Source: http://focus.ti.com/lit/ds/slcs146e/slcs146e.pdf</description>
+<gates>
+<gate name="G$1" symbol="LM4041" x="0" y="0"/>
+</gates>
+<devices>
+<device name="DBZ" package="DBZ_R-PDSO-G3">
+<connects>
+<connect gate="G$1" pin="A" pad="2"/>
+<connect gate="G$1" pin="C" pad="1"/>
+</connects>
+<technologies>
+<technology name="A12">
+<attribute name="MF" value="" constant="no"/>
+<attribute name="MPN" value="LM4041A12IDBZR" constant="no"/>
+<attribute name="OC_FARNELL" value="1407949" constant="no"/>
+<attribute name="OC_NEWARK" value="58K5875" constant="no"/>
+</technology>
+<technology name="B12">
+<attribute name="MF" value="" constant="no"/>
+<attribute name="MPN" value="LM4041B12IDBZR" constant="no"/>
+<attribute name="OC_FARNELL" value="1575212" constant="no"/>
+<attribute name="OC_NEWARK" value="58K5882" constant="no"/>
+</technology>
+<technology name="C12">
+<attribute name="MF" value="TEXAS INSTRUMENT CONNECTORS" constant="no"/>
+<attribute name="MPN" value="LM4041C12QDBZT" constant="no"/>
+<attribute name="OC_FARNELL" value="1771733" constant="no"/>
+<attribute name="OC_NEWARK" value="43K3376" constant="no"/>
+</technology>
+<technology name="D12">
+<attribute name="MF" value="TEXAS INSTRUMENT CONNECTORS" constant="no"/>
+<attribute name="MPN" value="LM4041D12QDBZT" constant="no"/>
+<attribute name="OC_FARNELL" value="1755118" constant="no"/>
+<attribute name="OC_NEWARK" value="43K3381" constant="no"/>
+</technology>
+</technologies>
+</device>
+<device name="DCK" package="DCK_R-PDSO-G5">
+<connects>
+<connect gate="G$1" pin="A" pad="1"/>
+<connect gate="G$1" pin="C" pad="3"/>
+</connects>
+<technologies>
+<technology name="A12">
+<attribute name="MF" value="" constant="no"/>
+<attribute name="MPN" value="LM4041A12IDCKR" constant="no"/>
+<attribute name="OC_FARNELL" value="unknown" constant="no"/>
+<attribute name="OC_NEWARK" value="58K5877" constant="no"/>
+</technology>
+<technology name="B12">
+<attribute name="MF" value="" constant="no"/>
+<attribute name="MPN" value="LM4041B12IDCKR" constant="no"/>
+<attribute name="OC_FARNELL" value="unknown" constant="no"/>
+<attribute name="OC_NEWARK" value="58K5884" constant="no"/>
+</technology>
+<technology name="C12">
+<attribute name="MF" value="TEXAS INSTRUMENT CONNECTORS" constant="no"/>
+<attribute name="MPN" value="LM4041C12IDCKR" constant="no"/>
+<attribute name="OC_FARNELL" value="unknown" constant="no"/>
+<attribute name="OC_NEWARK" value="43K3374" constant="no"/>
+</technology>
+<technology name="D12">
+<attribute name="MF" value="TEXAS INSTRUMENT CONNECTORS" constant="no"/>
+<attribute name="MPN" value="LM4041D12IDCKR" constant="no"/>
+<attribute name="OC_FARNELL" value="1575129" constant="no"/>
+<attribute name="OC_NEWARK" value="43K3379" constant="no"/>
+</technology>
+</technologies>
+</device>
+<device name="LP" package="LP_O-PBCY-W3">
+<connects>
+<connect gate="G$1" pin="A" pad="3"/>
+<connect gate="G$1" pin="C" pad="2"/>
+</connects>
+<technologies>
+<technology name="A12">
+<attribute name="MF" value="" constant="no"/>
+<attribute name="MPN" value="" constant="no"/>
+<attribute name="OC_FARNELL" value="9486119" constant="no"/>
+<attribute name="OC_NEWARK" value="unknown" constant="no"/>
+</technology>
+<technology name="B12">
+<attribute name="MF" value="" constant="no"/>
+<attribute name="MPN" value="" constant="no"/>
+<attribute name="OC_FARNELL" value="unknown" constant="no"/>
+<attribute name="OC_NEWARK" value="unknown" constant="no"/>
+</technology>
+<technology name="C12">
+<attribute name="MF" value="" constant="no"/>
+<attribute name="MPN" value="LM4041C12ILP" constant="no"/>
+<attribute name="OC_FARNELL" value="unknown" constant="no"/>
+<attribute name="OC_NEWARK" value="18M2429" constant="no"/>
+</technology>
+<technology name="D12">
+<attribute name="MF" value="" constant="no"/>
+<attribute name="MPN" value="LM4041D12ILP" constant="no"/>
+<attribute name="OC_FARNELL" value="unknown" constant="no"/>
+<attribute name="OC_NEWARK" value="18M2431" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -15254,31 +15440,41 @@ Source: http://onsemi.com .. MBR0520LT1-D.pdf</description>
 <part name="SUPPLY7" library="supply2" deviceset="+10V" device=""/>
 <part name="IC4" library="linear" deviceset="LM358" device="D"/>
 <part name="R7" library="rcl" deviceset="R-EU_" device="R0805"/>
-<part name="R6" library="rcl" deviceset="R-EU_" device="R0805"/>
+<part name="R6" library="rcl" deviceset="R-EU_" device="R0805" value="100k"/>
 <part name="GND11" library="SparkFun" deviceset="GND" device=""/>
 <part name="SUPPLY2" library="supply2" deviceset="+5V" device=""/>
 <part name="GND21" library="SparkFun" deviceset="GND" device=""/>
 <part name="GND8" library="SparkFun" deviceset="GND" device=""/>
 <part name="GND22" library="SparkFun" deviceset="GND" device=""/>
 <part name="SUPPLY8" library="supply2" deviceset="+10V" device=""/>
-<part name="R12" library="rcl" deviceset="R-EU_" device="R0805"/>
-<part name="R9" library="rcl" deviceset="R-EU_" device="R0805"/>
+<part name="R12" library="rcl" deviceset="R-EU_" device="R0805" value="100k"/>
+<part name="R9" library="rcl" deviceset="R-EU_" device="R0805" value="100k"/>
 <part name="R8" library="rcl" deviceset="R-EU_" device="R0805"/>
 <part name="R11" library="rcl" deviceset="R-EU_" device="R0805"/>
 <part name="C10" library="resistor" deviceset="C-EU" device="C0805"/>
+<part name="IC5" library="texas" deviceset="LM4041" device="DBZ" technology="A12"/>
+<part name="R14" library="rcl" deviceset="R-EU_" device="R0805" value="3k"/>
+<part name="SUPPLY3" library="supply2" deviceset="+5V" device=""/>
+<part name="GND23" library="SparkFun" deviceset="GND" device=""/>
+<part name="C9" library="resistor" deviceset="C-EU" device="C0805"/>
+<part name="GND24" library="SparkFun" deviceset="GND" device=""/>
+<part name="GND25" library="SparkFun" deviceset="GND" device=""/>
+<part name="C11" library="rcl" deviceset="CPOL-EU" device="E2.5-5"/>
 </parts>
 <sheets>
 <sheet>
 <plain>
 <text x="244.856" y="114.554" size="3.81" layer="91">10V CHARGE PUMP</text>
-<text x="152.654" y="120.142" size="3.81" layer="91">DAC</text>
+<text x="91.694" y="115.062" size="3.81" layer="91">DAC</text>
 <text x="60.96" y="43.18" size="3.81" layer="91">CV OUT BUFFER (x2 GAIN)</text>
 <text x="192.786" y="24.892" size="3.81" layer="91">GATE/CLOCK BUFFER</text>
 <text x="193.04" y="19.05" size="3.81" layer="91">&amp; LEVEL SHIFTER</text>
 <text x="58.166" y="26.67" size="5.08" layer="91">CV TAB FOR ARPIE</text>
-<text x="58.42" y="20.32" size="5.08" layer="91">VERSION 2 - 17NOV18</text>
+<text x="58.42" y="20.32" size="5.08" layer="91">VERSION 3 - 2dec18</text>
 <text x="58.42" y="12.7" size="3.81" layer="91">Sixty four pixels limited</text>
 <text x="58.42" y="7.62" size="3.81" layer="91">CC-NC-BY-SA Not to be used for commercial purposes</text>
+<text x="127.254" y="109.982" size="2.54" layer="91">2.048V 
+Shunt Ref</text>
 </plain>
 <instances>
 <instance part="LD3" gate="G$1" x="88.9" y="215.9" smashed="yes" rot="R180">
@@ -15353,16 +15549,16 @@ Source: http://onsemi.com .. MBR0520LT1-D.pdf</description>
 <instance part="CLKOUT" gate="G$1" x="276.86" y="86.36" rot="R270"/>
 <instance part="GATEOUT" gate="G$1" x="276.86" y="60.96" rot="R270"/>
 <instance part="CVOUT" gate="G$1" x="276.86" y="35.56" rot="R270"/>
-<instance part="IC1" gate="G$1" x="157.48" y="132.08"/>
+<instance part="IC1" gate="G$1" x="96.52" y="127"/>
 <instance part="C5" gate="G$1" x="254" y="81.28"/>
 <instance part="C4" gate="G$1" x="254" y="55.88"/>
 <instance part="R5" gate="G$1" x="243.84" y="86.36"/>
 <instance part="GND16" gate="1" x="266.7" y="22.86"/>
 <instance part="R4" gate="G$1" x="243.84" y="60.96"/>
-<instance part="SUPPLY1" gate="+5V" x="182.88" y="144.78"/>
-<instance part="GND7" gate="1" x="127" y="114.3"/>
-<instance part="C1" gate="G$1" x="137.16" y="121.92" rot="R180"/>
-<instance part="GND9" gate="1" x="137.16" y="114.3"/>
+<instance part="SUPPLY1" gate="+5V" x="76.2" y="139.7"/>
+<instance part="GND7" gate="1" x="66.04" y="109.22"/>
+<instance part="C1" gate="G$1" x="76.2" y="116.84" rot="R180"/>
+<instance part="GND9" gate="1" x="76.2" y="109.22"/>
 <instance part="IC2" gate="G$1" x="93.98" y="76.2"/>
 <instance part="R1" gate="G$1" x="111.76" y="76.2" rot="R180"/>
 <instance part="C2" gate="G$1" x="104.14" y="91.44" rot="R180"/>
@@ -15400,6 +15596,16 @@ Source: http://onsemi.com .. MBR0520LT1-D.pdf</description>
 <instance part="R8" gate="G$1" x="226.06" y="68.58" rot="R180"/>
 <instance part="R11" gate="G$1" x="226.06" y="96.52" rot="R180"/>
 <instance part="C10" gate="G$1" x="223.52" y="111.76"/>
+<instance part="IC5" gate="G$1" x="124.46" y="119.38" smashed="yes">
+<attribute name="NAME" x="127.254" y="118.745" size="1.778" layer="95"/>
+</instance>
+<instance part="R14" gate="G$1" x="124.46" y="137.16" rot="R90"/>
+<instance part="SUPPLY3" gate="+5V" x="124.46" y="149.86"/>
+<instance part="GND23" gate="1" x="124.46" y="109.22"/>
+<instance part="C9" gate="G$1" x="116.84" y="116.84" rot="R180"/>
+<instance part="GND24" gate="1" x="116.84" y="109.22"/>
+<instance part="GND25" gate="1" x="114.3" y="160.02"/>
+<instance part="C11" gate="G$1" x="114.3" y="170.18"/>
 </instances>
 <busses>
 </busses>
@@ -15474,13 +15680,13 @@ Source: http://onsemi.com .. MBR0520LT1-D.pdf</description>
 <segment>
 <pinref part="IC1" gate="G$1" pin="VSS"/>
 <pinref part="GND7" gate="1" pin="GND"/>
-<wire x1="142.24" y1="132.08" x2="127" y2="132.08" width="0.1524" layer="91"/>
-<wire x1="127" y1="132.08" x2="127" y2="116.84" width="0.1524" layer="91"/>
+<wire x1="81.28" y1="127" x2="66.04" y2="127" width="0.1524" layer="91"/>
+<wire x1="66.04" y1="127" x2="66.04" y2="111.76" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="GND9" gate="1" pin="GND"/>
 <pinref part="C1" gate="G$1" pin="1"/>
-<wire x1="137.16" y1="116.84" x2="137.16" y2="119.38" width="0.1524" layer="91"/>
+<wire x1="76.2" y1="111.76" x2="76.2" y2="114.3" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="C2" gate="G$1" pin="1"/>
@@ -15545,6 +15751,22 @@ Source: http://onsemi.com .. MBR0520LT1-D.pdf</description>
 <pinref part="C10" gate="G$1" pin="2"/>
 <wire x1="223.52" y1="104.14" x2="223.52" y2="106.68" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="GND23" gate="1" pin="GND"/>
+<pinref part="IC5" gate="G$1" pin="A"/>
+<wire x1="124.46" y1="111.76" x2="124.46" y2="116.84" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="GND24" gate="1" pin="GND"/>
+<pinref part="C9" gate="G$1" pin="1"/>
+<wire x1="116.84" y1="111.76" x2="116.84" y2="114.3" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="GND25" gate="1" pin="GND"/>
+<wire x1="114.3" y1="162.56" x2="114.3" y2="165.1" width="0.1524" layer="91"/>
+<pinref part="C11" gate="G$1" pin="-"/>
+<junction x="114.3" y="165.1"/>
+</segment>
 </net>
 <net name="+5V" class="0">
 <segment>
@@ -15552,21 +15774,19 @@ Source: http://onsemi.com .. MBR0520LT1-D.pdf</description>
 <wire x1="137.16" y1="177.8" x2="114.3" y2="177.8" width="0.1524" layer="91"/>
 <wire x1="114.3" y1="177.8" x2="114.3" y2="182.88" width="0.1524" layer="91"/>
 <pinref part="SUPPLY4" gate="+5V" pin="+5V"/>
+<wire x1="114.3" y1="172.72" x2="114.3" y2="177.8" width="0.1524" layer="91"/>
+<junction x="114.3" y="177.8"/>
+<pinref part="C11" gate="G$1" pin="+"/>
+<junction x="114.3" y="172.72"/>
 </segment>
 <segment>
 <pinref part="IC1" gate="G$1" pin="VDD"/>
-<wire x1="142.24" y1="129.54" x2="137.16" y2="129.54" width="0.1524" layer="91"/>
-<wire x1="137.16" y1="129.54" x2="137.16" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="81.28" y1="124.46" x2="76.2" y2="124.46" width="0.1524" layer="91"/>
+<wire x1="76.2" y1="124.46" x2="76.2" y2="137.16" width="0.1524" layer="91"/>
 <pinref part="SUPPLY1" gate="+5V" pin="+5V"/>
-<wire x1="137.16" y1="139.7" x2="182.88" y2="139.7" width="0.1524" layer="91"/>
-<wire x1="182.88" y1="139.7" x2="182.88" y2="142.24" width="0.1524" layer="91"/>
-<pinref part="IC1" gate="G$1" pin="VREF"/>
-<wire x1="172.72" y1="134.62" x2="182.88" y2="134.62" width="0.1524" layer="91"/>
-<wire x1="182.88" y1="134.62" x2="182.88" y2="139.7" width="0.1524" layer="91"/>
-<junction x="182.88" y="139.7"/>
 <pinref part="C1" gate="G$1" pin="2"/>
-<wire x1="137.16" y1="127" x2="137.16" y2="129.54" width="0.1524" layer="91"/>
-<junction x="137.16" y="129.54"/>
+<wire x1="76.2" y1="121.92" x2="76.2" y2="124.46" width="0.1524" layer="91"/>
+<junction x="76.2" y="124.46"/>
 </segment>
 <segment>
 <pinref part="IC3" gate="G$1" pin="V+"/>
@@ -15585,6 +15805,11 @@ Source: http://onsemi.com .. MBR0520LT1-D.pdf</description>
 <pinref part="R6" gate="G$1" pin="2"/>
 <pinref part="SUPPLY2" gate="+5V" pin="+5V"/>
 <wire x1="185.42" y1="101.6" x2="185.42" y2="104.14" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="R14" gate="G$1" pin="2"/>
+<pinref part="SUPPLY3" gate="+5V" pin="+5V"/>
+<wire x1="124.46" y1="142.24" x2="124.46" y2="147.32" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="CLK_OUT" class="0">
@@ -15658,8 +15883,8 @@ Source: http://onsemi.com .. MBR0520LT1-D.pdf</description>
 <net name="SCL" class="0">
 <segment>
 <pinref part="IC1" gate="G$1" pin="SCL"/>
-<wire x1="172.72" y1="132.08" x2="195.58" y2="132.08" width="0.1524" layer="91"/>
-<label x="195.58" y="132.08" size="1.778" layer="95"/>
+<wire x1="111.76" y1="127" x2="134.62" y2="127" width="0.1524" layer="91"/>
+<label x="134.62" y="127" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="PC5" gate="G$1" pin="1"/>
@@ -15670,8 +15895,8 @@ Source: http://onsemi.com .. MBR0520LT1-D.pdf</description>
 <net name="SDA" class="0">
 <segment>
 <pinref part="IC1" gate="G$1" pin="SDA"/>
-<wire x1="172.72" y1="129.54" x2="195.58" y2="129.54" width="0.1524" layer="91"/>
-<label x="195.58" y="129.54" size="1.778" layer="95"/>
+<wire x1="111.76" y1="124.46" x2="134.62" y2="124.46" width="0.1524" layer="91"/>
+<label x="134.62" y="124.46" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="PC4" gate="G$1" pin="1"/>
@@ -15797,8 +16022,8 @@ Source: http://onsemi.com .. MBR0520LT1-D.pdf</description>
 </segment>
 <segment>
 <pinref part="IC1" gate="G$1" pin="VOUT"/>
-<wire x1="142.24" y1="134.62" x2="127" y2="134.62" width="0.1524" layer="91"/>
-<label x="127" y="134.62" size="1.778" layer="95"/>
+<wire x1="81.28" y1="129.54" x2="66.04" y2="129.54" width="0.1524" layer="91"/>
+<label x="66.04" y="129.54" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$1" class="0">
@@ -15854,6 +16079,21 @@ Source: http://onsemi.com .. MBR0520LT1-D.pdf</description>
 <junction x="208.28" y="63.5"/>
 </segment>
 </net>
+<net name="N$6" class="0">
+<segment>
+<pinref part="IC1" gate="G$1" pin="VREF"/>
+<wire x1="111.76" y1="129.54" x2="116.84" y2="129.54" width="0.1524" layer="91"/>
+<pinref part="R14" gate="G$1" pin="1"/>
+<wire x1="116.84" y1="129.54" x2="124.46" y2="129.54" width="0.1524" layer="91"/>
+<wire x1="124.46" y1="132.08" x2="124.46" y2="129.54" width="0.1524" layer="91"/>
+<pinref part="IC5" gate="G$1" pin="C"/>
+<wire x1="124.46" y1="121.92" x2="124.46" y2="129.54" width="0.1524" layer="91"/>
+<junction x="124.46" y="129.54"/>
+<pinref part="C9" gate="G$1" pin="2"/>
+<wire x1="116.84" y1="121.92" x2="116.84" y2="129.54" width="0.1524" layer="91"/>
+<junction x="116.84" y="129.54"/>
+</segment>
+</net>
 </nets>
 </sheet>
 </sheets>
@@ -15872,8 +16112,8 @@ Source: http://onsemi.com .. MBR0520LT1-D.pdf</description>
 <approved hash="101,1,185.42,205.74,UN1,1,,,,"/>
 <approved hash="101,1,137.16,162.56,VCC1,1,,,,"/>
 <approved hash="101,1,137.16,170.18,VCC2,1,,,,"/>
-<approved hash="104,1,142.24,132.08,IC1,VSS,GND,,,"/>
-<approved hash="104,1,142.24,129.54,IC1,VDD,+5V,,,"/>
+<approved hash="104,1,81.28,127,IC1,VSS,GND,,,"/>
+<approved hash="104,1,81.28,124.46,IC1,VDD,+5V,,,"/>
 <approved hash="104,1,93.98,83.82,IC2,V+,+10V,,,"/>
 <approved hash="104,1,93.98,68.58,IC2,V-,GND,,,"/>
 <approved hash="104,1,218.44,93.98,IC4P,V+,+10V,,,"/>
@@ -15910,7 +16150,7 @@ Source: http://onsemi.com .. MBR0520LT1-D.pdf</description>
 <approved hash="113,1,255.671,54.61,C4,,,,,"/>
 <approved hash="113,1,243.84,87.3548,R5,,,,,"/>
 <approved hash="113,1,243.84,61.9548,R4,,,,,"/>
-<approved hash="113,1,135.489,123.19,C1,,,,,"/>
+<approved hash="113,1,74.5287,118.11,C1,,,,,"/>
 <approved hash="113,1,111.76,75.2052,R1,,,,,"/>
 <approved hash="113,1,102.469,92.71,C2,,,,,"/>
 <approved hash="113,1,111.76,62.5052,R3,,,,,"/>
@@ -15918,13 +16158,18 @@ Source: http://onsemi.com .. MBR0520LT1-D.pdf</description>
 <approved hash="113,1,102.469,69.85,C3,,,,,"/>
 <approved hash="113,1,293.458,133.35,C6,,,,,"/>
 <approved hash="113,1,184.425,43.18,R7,,,,,"/>
-<approved hash="113,1,184.425,96.52,R6,,,,,"/>
-<approved hash="113,1,198.12,87.9052,R12,,,,,"/>
-<approved hash="113,1,198.12,62.5052,R9,,,,,"/>
 <approved hash="113,1,226.06,67.5852,R8,,,,,"/>
 <approved hash="113,1,226.06,95.5252,R11,,,,,"/>
 <approved hash="113,1,225.901,110.49,C10,,,,,"/>
+<approved hash="113,1,115.169,118.11,C9,,,,,"/>
+<approved hash="113,1,116.274,168.91,C11,,,,,"/>
 </errors>
 </schematic>
 </drawing>
+<compatibility>
+<note version="6.3" minversion="6.2.2" severity="warning">
+Since Version 6.2.2 text objects can contain more than one line,
+which will not be processed correctly with this version.
+</note>
+</compatibility>
 </eagle>
