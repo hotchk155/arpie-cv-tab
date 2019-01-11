@@ -1787,9 +1787,9 @@ Source: www.farnell.com/datasheets/247.pdf</description>
 <package name="SMD35MMJACK">
 <hole x="2.5" y="0" drill="1.6"/>
 <hole x="8.5" y="0" drill="1.6"/>
-<wire x1="-2.5" y1="2.5" x2="0" y2="2.5" width="0.127" layer="21"/>
-<wire x1="-2.5" y1="-2.5" x2="0" y2="-2.5" width="0.127" layer="21"/>
-<wire x1="-2.5" y1="-2.5" x2="-2.5" y2="2.5" width="0.127" layer="21"/>
+<wire x1="0.294" y1="2.5" x2="0" y2="2.5" width="0.127" layer="47"/>
+<wire x1="0.294" y1="-2.5" x2="0" y2="-2.5" width="0.127" layer="21"/>
+<wire x1="0.294" y1="-2.5" x2="0.294" y2="2.5" width="0.127" layer="47"/>
 <smd name="S@" x="1.8" y="-3.2" dx="2" dy="3" layer="1"/>
 <smd name="R@" x="5" y="-3.2" dx="2" dy="3" layer="1"/>
 <smd name="T@" x="8.5" y="-3.2" dx="2" dy="3" layer="1"/>
@@ -1798,7 +1798,8 @@ Source: www.farnell.com/datasheets/247.pdf</description>
 <smd name="S" x="1.8" y="3.2" dx="2" dy="3" layer="1"/>
 <smd name="R" x="5" y="3.2" dx="2" dy="3" layer="1"/>
 <smd name="T" x="8.5" y="3.2" dx="2" dy="3" layer="1"/>
-<wire x1="0" y1="3.1" x2="0" y2="-3.1" width="0.127" layer="21"/>
+<wire x1="0" y1="3.1" x2="0" y2="-2.5" width="0.127" layer="21"/>
+<wire x1="0" y1="-2.5" x2="0" y2="-3.1" width="0.127" layer="21"/>
 <wire x1="11.5" y1="3.1" x2="11.5" y2="-3.1" width="0.127" layer="21"/>
 <text x="13.335" y="-3.175" size="1.27" layer="21" rot="R90">&gt;NAME</text>
 </package>
