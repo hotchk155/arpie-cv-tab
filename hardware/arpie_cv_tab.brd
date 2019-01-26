@@ -3422,10 +3422,10 @@ design rules under a new name.</description>
 <attribute name="NAME" x="80.01" y="29.845" size="1.27" layer="25" font="vector" ratio="20" rot="R180"/>
 <attribute name="VALUE" x="82.804" y="31.496" size="1.27" layer="27" rot="R180"/>
 </element>
-<element name="R5" library="rcl" package="R0805" value="" x="81.915" y="22.86" smashed="yes">
+<element name="R5" library="rcl" package="R0805" value="1k" x="81.915" y="22.86" smashed="yes">
 <attribute name="NAME" x="77.597" y="22.987" size="1.27" layer="25" font="vector" ratio="20"/>
 </element>
-<element name="R4" library="rcl" package="R0805" value="" x="81.915" y="31.75" smashed="yes">
+<element name="R4" library="rcl" package="R0805" value="1k" x="81.915" y="31.75" smashed="yes">
 <attribute name="NAME" x="77.724" y="30.353" size="1.27" layer="25" font="vector" ratio="20"/>
 </element>
 <element name="C1" library="resistor" package="C0805" value="" x="66.04" y="40.005" smashed="yes" rot="R180">
@@ -3473,11 +3473,10 @@ design rules under a new name.</description>
 <element name="IC4" library="linear" package="SO08" value="LM358D" x="73.66" y="12.7" smashed="yes">
 <attribute name="NAME" x="77.597" y="11.43" size="1.27" layer="25" font="vector" ratio="20" rot="R90"/>
 </element>
-<element name="R7" library="rcl" package="R0805" value="" x="67.31" y="15.24" smashed="yes" rot="R270">
+<element name="R7" library="rcl" package="R0805" value="47k" x="67.31" y="15.24" smashed="yes" rot="R270">
 <attribute name="NAME" x="64.77" y="11.938" size="1.27" layer="25" font="vector" ratio="20"/>
-<attribute name="VALUE" x="64.77" y="15.875" size="1.27" layer="27" rot="R270"/>
 </element>
-<element name="R6" library="rcl" package="R0805" value="100k" x="64.77" y="15.24" smashed="yes" rot="R90">
+<element name="R6" library="rcl" package="R0805" value="47k" x="64.77" y="15.24" smashed="yes" rot="R90">
 <attribute name="NAME" x="62.23" y="16.637" size="1.27" layer="25" font="vector" ratio="20" rot="R270"/>
 </element>
 <element name="R12" library="rcl" package="R0805" value="100k" x="81.915" y="8.89" smashed="yes" rot="R90">
@@ -3486,13 +3485,11 @@ design rules under a new name.</description>
 <element name="R9" library="rcl" package="R0805" value="100k" x="81.915" y="16.129" smashed="yes" rot="R270">
 <attribute name="NAME" x="80.899" y="18.415" size="1.27" layer="25" font="vector" ratio="20"/>
 </element>
-<element name="R8" library="rcl" package="R0805" value="" x="79.375" y="16.129" smashed="yes" rot="R90">
+<element name="R8" library="rcl" package="R0805" value="2m2" x="79.375" y="16.129" smashed="yes" rot="R90">
 <attribute name="NAME" x="76.835" y="18.161" size="1.27" layer="25" font="vector" ratio="20" rot="R270"/>
-<attribute name="VALUE" x="81.915" y="15.494" size="1.27" layer="27" rot="R90"/>
 </element>
-<element name="R11" library="rcl" package="R0805" value="" x="79.375" y="8.89" smashed="yes" rot="R270">
+<element name="R11" library="rcl" package="R0805" value="2m2" x="79.375" y="8.89" smashed="yes" rot="R270">
 <attribute name="NAME" x="77.724" y="5.461" size="1.27" layer="25" font="vector" ratio="20"/>
-<attribute name="VALUE" x="76.835" y="9.525" size="1.27" layer="27" rot="R270"/>
 </element>
 <element name="C10" library="resistor" package="C0805" value="" x="69.85" y="15.24" smashed="yes" rot="R90">
 <attribute name="NAME" x="67.564" y="12.065" size="1.27" layer="25" font="vector" ratio="20"/>

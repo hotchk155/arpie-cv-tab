@@ -15814,9 +15814,9 @@ Source: www.kingbright.com</description>
 <part name="IC1" library="jasons_stuff" deviceset="MCP4726" device=""/>
 <part name="C5" library="resistor" deviceset="C-EU" device="C0805"/>
 <part name="C4" library="resistor" deviceset="C-EU" device="C0805"/>
-<part name="R5" library="rcl" deviceset="R-EU_" device="R0805"/>
+<part name="R5" library="rcl" deviceset="R-EU_" device="R0805" value="1k"/>
 <part name="GND16" library="SparkFun" deviceset="GND" device=""/>
-<part name="R4" library="rcl" deviceset="R-EU_" device="R0805"/>
+<part name="R4" library="rcl" deviceset="R-EU_" device="R0805" value="1k"/>
 <part name="SUPPLY1" library="supply2" deviceset="+5V" device=""/>
 <part name="GND7" library="SparkFun" deviceset="GND" device=""/>
 <part name="C1" library="resistor" deviceset="C-EU" device="C0805"/>
@@ -15843,8 +15843,8 @@ Source: www.kingbright.com</description>
 <part name="SUPPLY6" library="supply2" deviceset="+5V" device=""/>
 <part name="SUPPLY7" library="supply2" deviceset="+10V" device=""/>
 <part name="IC4" library="linear" deviceset="LM358" device="D"/>
-<part name="R7" library="rcl" deviceset="R-EU_" device="R0805"/>
-<part name="R6" library="rcl" deviceset="R-EU_" device="R0805" value="100k"/>
+<part name="R7" library="rcl" deviceset="R-EU_" device="R0805" value="47k"/>
+<part name="R6" library="rcl" deviceset="R-EU_" device="R0805" value="47k"/>
 <part name="GND11" library="SparkFun" deviceset="GND" device=""/>
 <part name="SUPPLY2" library="supply2" deviceset="+5V" device=""/>
 <part name="GND21" library="SparkFun" deviceset="GND" device=""/>
@@ -15853,8 +15853,8 @@ Source: www.kingbright.com</description>
 <part name="SUPPLY8" library="supply2" deviceset="+10V" device=""/>
 <part name="R12" library="rcl" deviceset="R-EU_" device="R0805" value="100k"/>
 <part name="R9" library="rcl" deviceset="R-EU_" device="R0805" value="100k"/>
-<part name="R8" library="rcl" deviceset="R-EU_" device="R0805"/>
-<part name="R11" library="rcl" deviceset="R-EU_" device="R0805"/>
+<part name="R8" library="rcl" deviceset="R-EU_" device="R0805" value="2m2"/>
+<part name="R11" library="rcl" deviceset="R-EU_" device="R0805" value="2m2"/>
 <part name="C10" library="resistor" deviceset="C-EU" device="C0805"/>
 <part name="IC5" library="texas" deviceset="LM4041" device="DBZ" technology="A12"/>
 <part name="R14" library="rcl" deviceset="R-EU_" device="R0805" value="3k"/>
