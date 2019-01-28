@@ -10101,25 +10101,6 @@ In this library the device names are the same as the pin names of the symbols, t
 </library>
 <library name="jasons_stuff">
 <packages>
-<package name="SMD35MMJACK">
-<hole x="2.5" y="0" drill="1.6"/>
-<hole x="8.5" y="0" drill="1.6"/>
-<wire x1="0.294" y1="2.5" x2="0" y2="2.5" width="0.127" layer="47"/>
-<wire x1="0.294" y1="-2.5" x2="0" y2="-2.5" width="0.127" layer="21"/>
-<wire x1="0.294" y1="-2.5" x2="0.294" y2="2.5" width="0.127" layer="47"/>
-<smd name="S@" x="1.8" y="-3.2" dx="2" dy="3" layer="1"/>
-<smd name="R@" x="5" y="-3.2" dx="2" dy="3" layer="1"/>
-<smd name="T@" x="8.5" y="-3.2" dx="2" dy="3" layer="1"/>
-<wire x1="0" y1="-3.1" x2="11.5" y2="-3.1" width="0.127" layer="21"/>
-<wire x1="0" y1="3.1" x2="11.5" y2="3.1" width="0.127" layer="21"/>
-<smd name="S" x="1.8" y="3.2" dx="2" dy="3" layer="1"/>
-<smd name="R" x="5" y="3.2" dx="2" dy="3" layer="1"/>
-<smd name="T" x="8.5" y="3.2" dx="2" dy="3" layer="1"/>
-<wire x1="0" y1="3.1" x2="0" y2="-2.5" width="0.127" layer="21"/>
-<wire x1="0" y1="-2.5" x2="0" y2="-3.1" width="0.127" layer="21"/>
-<wire x1="11.5" y1="3.1" x2="11.5" y2="-3.1" width="0.127" layer="21"/>
-<text x="13.335" y="-3.175" size="1.27" layer="21" rot="R90">&gt;NAME</text>
-</package>
 <package name="SOT23-6">
 <wire x1="1.422" y1="0.81" x2="1.422" y2="-0.81" width="0.1524" layer="21"/>
 <wire x1="1.422" y1="-0.81" x2="-1.422" y2="-0.81" width="0.1524" layer="51"/>
@@ -10150,22 +10131,6 @@ In this library the device names are the same as the pin names of the symbols, t
 </package>
 </packages>
 <symbols>
-<symbol name="SMT35MMJACK">
-<pin name="S" x="-5.08" y="-5.08" length="middle" rot="R90"/>
-<pin name="T" x="0" y="-5.08" length="middle" rot="R90"/>
-<pin name="R" x="5.08" y="-5.08" length="middle" rot="R90"/>
-<wire x1="0" y1="0" x2="0" y2="5.08" width="0.254" layer="94"/>
-<wire x1="0" y1="5.08" x2="2.54" y2="7.62" width="0.254" layer="94"/>
-<wire x1="2.54" y1="7.62" x2="0" y2="10.16" width="0.254" layer="94"/>
-<wire x1="5.08" y1="0" x2="5.08" y2="12.7" width="0.254" layer="94"/>
-<wire x1="5.08" y1="12.7" x2="2.54" y2="15.24" width="0.254" layer="94"/>
-<wire x1="2.54" y1="15.24" x2="5.08" y2="17.78" width="0.254" layer="94"/>
-<wire x1="-5.08" y1="0" x2="-5.08" y2="20.32" width="0.254" layer="94"/>
-<wire x1="-5.08" y1="20.32" x2="5.08" y2="20.32" width="0.254" layer="94"/>
-<wire x1="5.08" y1="20.32" x2="5.08" y2="22.86" width="0.254" layer="94"/>
-<wire x1="5.08" y1="22.86" x2="-2.54" y2="22.86" width="0.254" layer="94"/>
-<text x="7.62" y="-2.54" size="1.778" layer="94" rot="R90">&gt;NAME</text>
-</symbol>
 <symbol name="MCP4726">
 <pin name="VOUT" x="-15.24" y="2.54" length="middle" direction="out"/>
 <pin name="VSS" x="-15.24" y="0" length="middle" direction="pwr"/>
@@ -10180,23 +10145,6 @@ In this library the device names are the same as the pin names of the symbols, t
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="SMD35MMJACK">
-<gates>
-<gate name="G$1" symbol="SMT35MMJACK" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="SMD35MMJACK">
-<connects>
-<connect gate="G$1" pin="R" pad="R R@"/>
-<connect gate="G$1" pin="S" pad="S S@"/>
-<connect gate="G$1" pin="T" pad="T T@"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
 <deviceset name="MCP4726">
 <description>I2C DAC 12BIT</description>
 <gates>
@@ -13827,6 +13775,20 @@ Source: http://cache.national.com/ds/LM/LM158.pdf</description>
 <rectangle x1="-0.25" y1="0.8" x2="0.25" y2="1.4" layer="51"/>
 <rectangle x1="-1.2" y1="0.8" x2="-0.7" y2="1.4" layer="51"/>
 </package>
+<package name="3_5MM_PTH_MICRO">
+<pad name="2" x="-3.2" y="0" drill="1.1" diameter="2"/>
+<pad name="2A" x="3.2" y="0" drill="1.1" diameter="2"/>
+<pad name="3" x="-3.2" y="-8" drill="1.1" diameter="2"/>
+<pad name="1" x="3.2" y="-8" drill="1.1" diameter="2"/>
+<wire x1="-3.2" y1="-8.5" x2="3.2" y2="-8.5" width="0.127" layer="21"/>
+<wire x1="-3.2" y1="-8.5" x2="-3.2" y2="3.5" width="0.127" layer="21"/>
+<wire x1="3.2" y1="-8.5" x2="3.2" y2="3.5" width="0.127" layer="21"/>
+<wire x1="-3.2" y1="3.5" x2="-3" y2="3.5" width="0.127" layer="21"/>
+<wire x1="-3" y1="3.5" x2="3" y2="3.5" width="0.127" layer="21"/>
+<wire x1="3" y1="3.5" x2="3.2" y2="3.5" width="0.127" layer="21"/>
+<hole x="0" y="1.5" drill="1.2"/>
+<hole x="0" y="-5.5" drill="1.2"/>
+</package>
 </packages>
 <symbols>
 <symbol name="LM2767M5_CHARGEPUMP">
@@ -13840,6 +13802,23 @@ Source: http://cache.national.com/ds/LM/LM158.pdf</description>
 <wire x1="-7.62" y1="-5.08" x2="7.62" y2="-5.08" width="0.254" layer="94"/>
 <wire x1="7.62" y1="-5.08" x2="7.62" y2="5.08" width="0.254" layer="94"/>
 <wire x1="7.62" y1="5.08" x2="-7.62" y2="5.08" width="0.254" layer="94"/>
+</symbol>
+<symbol name="STEREO_NOSWITCH_JACK">
+<pin name="3" x="10.16" y="-2.54" length="middle" rot="R180"/>
+<pin name="4" x="10.16" y="0" length="middle" rot="R180"/>
+<pin name="2" x="10.16" y="2.54" length="middle" rot="R180"/>
+<wire x1="5.08" y1="0" x2="3.81" y2="0" width="0.254" layer="94"/>
+<wire x1="3.81" y1="0" x2="2.54" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="2.54" y1="-1.27" x2="1.27" y2="0" width="0.254" layer="94"/>
+<wire x1="5.08" y1="-2.54" x2="1.27" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="1.27" y1="-2.54" x2="0" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="0" y1="-1.27" x2="-1.27" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="-3.81" y1="2.54" x2="-3.81" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="-3.81" y1="-2.54" x2="-2.54" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="-2.54" y1="-2.54" x2="-2.54" y2="2.54" width="0.254" layer="94"/>
+<wire x1="-2.54" y1="2.54" x2="-3.81" y2="2.54" width="0.254" layer="94"/>
+<wire x1="5.08" y1="2.54" x2="-2.54" y2="2.54" width="0.254" layer="94"/>
+<text x="-3.302" y="3.302" size="1.778" layer="94">&gt;NAME</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -13856,6 +13835,23 @@ Source: http://cache.national.com/ds/LM/LM158.pdf</description>
 <connect gate="G$1" pin="OUT" pad="5"/>
 <connect gate="G$1" pin="SD" pad="4"/>
 <connect gate="G$1" pin="V+" pad="1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="3_5MM_PTH_MICRO">
+<gates>
+<gate name="G$1" symbol="STEREO_NOSWITCH_JACK" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="3_5MM_PTH_MICRO">
+<connects>
+<connect gate="G$1" pin="2" pad="1"/>
+<connect gate="G$1" pin="3" pad="3"/>
+<connect gate="G$1" pin="4" pad="2 2A"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -15808,9 +15804,6 @@ Source: www.kingbright.com</description>
 <part name="GND12" library="SparkFun" deviceset="GND" device=""/>
 <part name="SUPPLY4" library="supply2" deviceset="+5V" device=""/>
 <part name="GND13" library="SparkFun" deviceset="GND" device=""/>
-<part name="CLKOUT" library="jasons_stuff" deviceset="SMD35MMJACK" device=""/>
-<part name="GATEOUT" library="jasons_stuff" deviceset="SMD35MMJACK" device=""/>
-<part name="CVOUT" library="jasons_stuff" deviceset="SMD35MMJACK" device=""/>
 <part name="IC1" library="jasons_stuff" deviceset="MCP4726" device=""/>
 <part name="C5" library="resistor" deviceset="C-EU" device="C0805"/>
 <part name="C4" library="resistor" deviceset="C-EU" device="C0805"/>
@@ -15866,6 +15859,9 @@ Source: www.kingbright.com</description>
 <part name="SUPPLY9" library="supply2" deviceset="+5V" device=""/>
 <part name="C12" library="resistor" deviceset="C-EU" device="C0805"/>
 <part name="GND26" library="SparkFun" deviceset="GND" device=""/>
+<part name="CLKOUT" library="jason_eagle6" deviceset="3_5MM_PTH_MICRO" device=""/>
+<part name="GATEOUT" library="jason_eagle6" deviceset="3_5MM_PTH_MICRO" device=""/>
+<part name="CVOUT" library="jason_eagle6" deviceset="3_5MM_PTH_MICRO" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -15876,7 +15872,7 @@ Source: www.kingbright.com</description>
 <text x="192.786" y="24.892" size="3.81" layer="91">GATE/CLOCK BUFFER</text>
 <text x="193.04" y="19.05" size="3.81" layer="91">&amp; LEVEL SHIFTER</text>
 <text x="58.166" y="26.67" size="5.08" layer="91">CV TAB FOR ARPIE</text>
-<text x="58.42" y="20.32" size="5.08" layer="91">VERSION 4 - 18dec18</text>
+<text x="58.42" y="20.32" size="5.08" layer="91">VERSION 5 - 28jan18</text>
 <text x="58.42" y="12.7" size="3.81" layer="91">Sixty four pixels limited</text>
 <text x="58.42" y="7.62" size="3.81" layer="91">CC-NC-BY-SA Not to be used for commercial purposes</text>
 <text x="127.254" y="109.982" size="2.54" layer="91">2.048V 
@@ -15953,9 +15949,6 @@ Shunt Ref</text>
 <instance part="GND12" gate="1" x="223.52" y="101.6"/>
 <instance part="SUPPLY4" gate="+5V" x="114.3" y="185.42"/>
 <instance part="GND13" gate="1" x="147.32" y="160.02"/>
-<instance part="CLKOUT" gate="G$1" x="276.86" y="86.36" rot="R270"/>
-<instance part="GATEOUT" gate="G$1" x="276.86" y="60.96" rot="R270"/>
-<instance part="CVOUT" gate="G$1" x="276.86" y="35.56" rot="R270"/>
 <instance part="IC1" gate="G$1" x="96.52" y="127"/>
 <instance part="C5" gate="G$1" x="254" y="81.28"/>
 <instance part="C4" gate="G$1" x="254" y="55.88"/>
@@ -16017,6 +16010,9 @@ Shunt Ref</text>
 <instance part="SUPPLY9" gate="+5V" x="162.56" y="154.94"/>
 <instance part="C12" gate="G$1" x="162.56" y="142.24" rot="R180"/>
 <instance part="GND26" gate="1" x="162.56" y="124.46"/>
+<instance part="CLKOUT" gate="G$1" x="289.56" y="86.36" rot="R180"/>
+<instance part="GATEOUT" gate="G$1" x="289.56" y="60.96" rot="R180"/>
+<instance part="CVOUT" gate="G$1" x="289.56" y="35.56" rot="R180"/>
 </instances>
 <busses>
 </busses>
@@ -16053,31 +16049,19 @@ Shunt Ref</text>
 <junction x="147.32" y="177.8"/>
 </segment>
 <segment>
-<pinref part="CLKOUT" gate="G$1" pin="S"/>
-<wire x1="271.78" y1="91.44" x2="266.7" y2="91.44" width="0.1524" layer="91"/>
-<wire x1="266.7" y1="91.44" x2="266.7" y2="81.28" width="0.1524" layer="91"/>
-<pinref part="CLKOUT" gate="G$1" pin="R"/>
-<wire x1="266.7" y1="81.28" x2="266.7" y2="71.12" width="0.1524" layer="91"/>
-<wire x1="266.7" y1="71.12" x2="266.7" y2="66.04" width="0.1524" layer="91"/>
-<wire x1="266.7" y1="66.04" x2="266.7" y2="55.88" width="0.1524" layer="91"/>
-<wire x1="271.78" y1="81.28" x2="266.7" y2="81.28" width="0.1524" layer="91"/>
-<junction x="266.7" y="81.28"/>
-<pinref part="GATEOUT" gate="G$1" pin="S"/>
-<wire x1="271.78" y1="66.04" x2="266.7" y2="66.04" width="0.1524" layer="91"/>
-<junction x="266.7" y="66.04"/>
-<pinref part="GATEOUT" gate="G$1" pin="R"/>
-<wire x1="271.78" y1="55.88" x2="266.7" y2="55.88" width="0.1524" layer="91"/>
-<junction x="266.7" y="55.88"/>
-<wire x1="266.7" y1="55.88" x2="266.7" y2="45.72" width="0.1524" layer="91"/>
-<pinref part="CVOUT" gate="G$1" pin="S"/>
-<wire x1="266.7" y1="45.72" x2="266.7" y2="40.64" width="0.1524" layer="91"/>
-<wire x1="266.7" y1="40.64" x2="266.7" y2="30.48" width="0.1524" layer="91"/>
-<wire x1="266.7" y1="30.48" x2="266.7" y2="25.4" width="0.1524" layer="91"/>
-<wire x1="271.78" y1="40.64" x2="266.7" y2="40.64" width="0.1524" layer="91"/>
-<junction x="266.7" y="40.64"/>
-<pinref part="CVOUT" gate="G$1" pin="R"/>
-<wire x1="271.78" y1="30.48" x2="266.7" y2="30.48" width="0.1524" layer="91"/>
-<junction x="266.7" y="30.48"/>
+<wire x1="266.7" y1="88.9" x2="266.7" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="266.7" y1="83.82" x2="266.7" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="266.7" y1="71.12" x2="266.7" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="266.7" y1="63.5" x2="266.7" y2="58.42" width="0.1524" layer="91"/>
+<junction x="266.7" y="83.82"/>
+<junction x="266.7" y="63.5"/>
+<junction x="266.7" y="58.42"/>
+<wire x1="266.7" y1="58.42" x2="266.7" y2="45.72" width="0.1524" layer="91"/>
+<wire x1="266.7" y1="45.72" x2="266.7" y2="38.1" width="0.1524" layer="91"/>
+<wire x1="266.7" y1="38.1" x2="266.7" y2="33.02" width="0.1524" layer="91"/>
+<wire x1="266.7" y1="33.02" x2="266.7" y2="25.4" width="0.1524" layer="91"/>
+<junction x="266.7" y="38.1"/>
+<junction x="266.7" y="33.02"/>
 <pinref part="GND16" gate="1" pin="GND"/>
 <pinref part="C4" gate="G$1" pin="2"/>
 <wire x1="254" y1="50.8" x2="254" y2="45.72" width="0.1524" layer="91"/>
@@ -16087,6 +16071,18 @@ Shunt Ref</text>
 <wire x1="254" y1="76.2" x2="254" y2="71.12" width="0.1524" layer="91"/>
 <wire x1="254" y1="71.12" x2="266.7" y2="71.12" width="0.1524" layer="91"/>
 <junction x="266.7" y="71.12"/>
+<pinref part="CVOUT" gate="G$1" pin="3"/>
+<wire x1="266.7" y1="38.1" x2="279.4" y2="38.1" width="0.1524" layer="91"/>
+<pinref part="CVOUT" gate="G$1" pin="2"/>
+<wire x1="266.7" y1="33.02" x2="279.4" y2="33.02" width="0.1524" layer="91"/>
+<pinref part="CLKOUT" gate="G$1" pin="3"/>
+<wire x1="279.4" y1="88.9" x2="266.7" y2="88.9" width="0.1524" layer="91"/>
+<pinref part="CLKOUT" gate="G$1" pin="2"/>
+<wire x1="266.7" y1="83.82" x2="279.4" y2="83.82" width="0.1524" layer="91"/>
+<pinref part="GATEOUT" gate="G$1" pin="3"/>
+<wire x1="266.7" y1="63.5" x2="279.4" y2="63.5" width="0.1524" layer="91"/>
+<pinref part="GATEOUT" gate="G$1" pin="2"/>
+<wire x1="266.7" y1="58.42" x2="279.4" y2="58.42" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="IC1" gate="G$1" pin="VSS"/>
@@ -16270,23 +16266,23 @@ Shunt Ref</text>
 <net name="N$19" class="0">
 <segment>
 <pinref part="R5" gate="G$1" pin="2"/>
-<pinref part="CLKOUT" gate="G$1" pin="T"/>
 <wire x1="248.92" y1="86.36" x2="254" y2="86.36" width="0.1524" layer="91"/>
 <pinref part="C5" gate="G$1" pin="1"/>
-<wire x1="254" y1="86.36" x2="271.78" y2="86.36" width="0.1524" layer="91"/>
+<wire x1="254" y1="86.36" x2="279.4" y2="86.36" width="0.1524" layer="91"/>
 <wire x1="254" y1="83.82" x2="254" y2="86.36" width="0.1524" layer="91"/>
 <junction x="254" y="86.36"/>
+<pinref part="CLKOUT" gate="G$1" pin="4"/>
 </segment>
 </net>
 <net name="N$20" class="0">
 <segment>
 <pinref part="R4" gate="G$1" pin="2"/>
-<pinref part="GATEOUT" gate="G$1" pin="T"/>
 <wire x1="248.92" y1="60.96" x2="254" y2="60.96" width="0.1524" layer="91"/>
 <pinref part="C4" gate="G$1" pin="1"/>
-<wire x1="254" y1="60.96" x2="271.78" y2="60.96" width="0.1524" layer="91"/>
+<wire x1="254" y1="60.96" x2="279.4" y2="60.96" width="0.1524" layer="91"/>
 <wire x1="254" y1="58.42" x2="254" y2="60.96" width="0.1524" layer="91"/>
 <junction x="254" y="60.96"/>
+<pinref part="GATEOUT" gate="G$1" pin="4"/>
 </segment>
 </net>
 <net name="N$12" class="0">
@@ -16424,9 +16420,9 @@ Shunt Ref</text>
 <label x="132.08" y="76.2" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="CVOUT" gate="G$1" pin="T"/>
-<wire x1="271.78" y1="35.56" x2="246.38" y2="35.56" width="0.1524" layer="91"/>
 <label x="236.22" y="35.56" size="1.778" layer="95"/>
+<pinref part="CVOUT" gate="G$1" pin="4"/>
+<wire x1="246.38" y1="35.56" x2="279.4" y2="35.56" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$38" class="0">
@@ -16582,8 +16578,6 @@ Shunt Ref</text>
 <approved hash="113,1,178.122,55.7474,GATE_LED,,,,,"/>
 <approved hash="113,1,255.671,80.01,C5,,,,,"/>
 <approved hash="113,1,255.671,54.61,C4,,,,,"/>
-<approved hash="113,1,243.84,87.3548,R5,,,,,"/>
-<approved hash="113,1,243.84,61.9548,R4,,,,,"/>
 <approved hash="113,1,74.5287,118.11,C1,,,,,"/>
 <approved hash="113,1,111.76,75.2052,R1,,,,,"/>
 <approved hash="113,1,102.469,92.71,C2,,,,,"/>
@@ -16591,9 +16585,6 @@ Shunt Ref</text>
 <approved hash="113,1,76.2,62.5052,R2,,,,,"/>
 <approved hash="113,1,102.469,69.85,C3,,,,,"/>
 <approved hash="113,1,293.458,133.35,C6,,,,,"/>
-<approved hash="113,1,184.425,43.18,R7,,,,,"/>
-<approved hash="113,1,226.06,67.5852,R8,,,,,"/>
-<approved hash="113,1,226.06,95.5252,R11,,,,,"/>
 <approved hash="113,1,225.901,110.49,C10,,,,,"/>
 <approved hash="113,1,115.169,118.11,C9,,,,,"/>
 <approved hash="113,1,160.179,143.51,C12,,,,,"/>
