@@ -1,0 +1,40 @@
+CVTAB V5 BILL OF MATERIALS 
+
+C1		100n
+C2		100n
+C3		20p
+C4		100n	
+C5		100n	
+C6		10u A-Case Tantalum
+C7       	10u A-Case Tantalum               
+C8       	10u A-Case Tantalum
+C9		100n
+C10		100n
+C12		100n
+
+D1       MBR0520LT
+
+IC1      MCP4726
+IC2      TSB611ILT
+IC3      LM27675M5
+IC4      LM358D
+IC5      LM4040D20 2.048V
+IC6      24AA64T-I/OT
+
+R1		1k
+R2		10k/0.1%
+R3		10k/0.1%
+R4		1k
+R5		1k
+R6       	47k
+R7		47K
+R8		2M2
+R9       	100k
+R10      	1K
+R11		2M2
+R12      	100k
+R13      	1K
+R14      	3k
+
+CLK_LED 	0805 
+GATE_LED        0805 
