@@ -3,8 +3,8 @@ CVTAB V5 BILL OF MATERIALS
 C1		100n
 C2		100n
 C3		20p
-C4		100n	
-C5		100n	
+C4		10n	
+C5		10n	
 C6		10u A-Case Tantalum
 C7       	10u A-Case Tantalum               
 C8       	10u A-Case Tantalum
