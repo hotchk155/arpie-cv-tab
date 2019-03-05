@@ -1,0 +1,218 @@
+<html>
+<head>
+<style>
+body {font-family: sans-serif}
+td {vertical-align: top}
+.cal-settings {font-weight: bold; font-size: 18pt}
+.scale-text { font-weight: bold; font-size: 14pt}
+.instruction { color: gray; font-size: 10pt; font-style: italic}
+.pg-heading {vertical-align: middle; font-size: 14pt; font-weight: bold; color: white; background: black; text-align: center}
+.cv-heading {vertical-align: middle; font-size: 14pt}
+.tp-main { color:black; background: #ccffcc }
+.tp-mid { color:black; background: #cccccc }
+.tp-outer { color:black; background: #eeeeee }
+</style>
+</head>
+<body>
+
+<table style="width: 640; border:thin solid black; background:#ffffee; cellpadding=5">
+<tr><td class="pg-heading">ARPIE CV TAB - OUTPUT CALIBRATION TOOL</td></tr>
+<tr><td class="instruction">
+This page uses the WebMIDI API and requires Chrome (probably)
+</td></tr>
+</table>
+
+<br>
+
+
+<table style="width: 640; border:thin solid black; background:#ffffee; cellpadding=5">
+<tr><td class="cv-heading">1. Select your MIDI output device</td></tr>
+<tr><td class="instruction">
+Please select the MIDI interface to which the ARPIE is attached. If you need to plug in a USB MIDI interface please connect it and reload the page. Make sure the ARPIE is in calibration mode.
+</td></tr>
+<tr><td><select id="midi-outputs"><option></option></select></td></tr>
+</table>
+
+<br>
+
+
+<table style="width: 640; border:thin solid black; background:#ffffee; cellpadding=5">
+<tr><td class="cv-heading">3. Calibrate each output</td></td>
+<tr><td class="instruction">
+Click a test point (voltage) to have all the CV outputs send that voltage. Work on one output at a time and use a voltmeter (or a VCO and 
+pitch counter/tuner) to measure the CV output. 
+<br><br>
+Start calibration of the output by setting the Scale and Offset to zero (press 0 button). 
+Adjust the Scale until at least the 3/4/5V test points are as close to 1V (or 1 Octave) apart as possible. You can then adjust Offset up/down 
+to align the outputs with the true voltage or pitch points as needed.<br><br>
+<b>Please note</b> the finest resolution possible is +/- 2mV and accuracy will typically be less at the top and bottom ends of the scale. Therefore it is 
+best to concentrate on the 3/4/5V points and only then consider the 1V/2V and 6V/7V points when the mid scale is calibrated.
+</td></tr>
+<tr><td>
+
+
+<table style="width: 640; border:none; color:white; background:#000000; cellpadding=5">
+<tr>
+<td td class="cv-heading">
+Test point
+</td>
+<td class='tp-outer'><label><input type='radio' name='test-point' id='test-point-1' onclick='javascript:onClickTestPoint(1);'>1.00V</label></td>
+<td class='tp-mid'><label><input type='radio' name='test-point' id='test-point-2' onclick='javascript:onClickTestPoint(2);'>2.00V</label></td>
+<td class='tp-main'><label><input type='radio' name='test-point' id='test-point-3' onclick='javascript:onClickTestPoint(3);'>3.00V</label></td>
+<td class='tp-main'><label><input type='radio' name='test-point' id='test-point-4' onclick='javascript:onClickTestPoint(4);'>4.00V</label></td>
+<td class='tp-main'><label><input type='radio' name='test-point' id='test-point-5' onclick='javascript:onClickTestPoint(5);'>5.00V</label></td>
+<td class='tp-mid'><label><input type='radio' name='test-point' id='test-point-6' onclick='javascript:onClickTestPoint(6);'>6.00V</label></td>
+<td class='tp-outer'><label><input type='radio' name='test-point' id='test-point-7' onclick='javascript:onClickTestPoint(7);'>7.00V</label></td>
+</tr>
+</table>
+
+
+<table style="width: 640; border:none; background:#ffffee; cellpadding=5">
+<tr>
+<td></td>
+<td class="cv-heading">Output A</td>
+</tr>
+
+<script>
+function editCell(tag) {
+	document.write("<table cellpadding=2 cellspacing=2><tr><td style='background:#333388; color:white; width: 50'>");
+	document.write("<span class='scale-text' id='" + tag + "'>*</span>");
+	document.write("</td><td>");
+	document.write("<input type='button' value='0' onclick=\"javascript:onClickCalibration('" + tag + "', 0);\">");	
+	document.write("</td><td>");
+	document.write("<input type='button' value='<' onclick=\"javascript:onClickCalibration('" + tag + "', -1);\">");	
+	document.write("</td><td>");
+	document.write("<input type='button' value='>' onclick=\"javascript:onClickCalibration('" + tag + "', +1);\">");		
+	document.write("</td>");
+	document.write("</tr>");
+	document.write("</table>");
+}
+</script>
+
+<tr>
+<td class="cv-heading">Scale</td>
+<td><script>editCell("scale-a");</script></td>
+</tr>
+
+<tr>
+<td class="cv-heading">Offset</td>
+<td><script>editCell("ofs-a");</script></td>
+</tr>
+
+<script>
+</script>
+
+
+</table>
+
+</td></tr></table>
+
+<br>
+
+<table style="width: 640; border:thin solid black; background:#ffffee; cellpadding=5">
+<tr><td class="cv-heading">4. Save your changes</td></tr>
+<tr><td class="instruction">
+At this point the calibration data is not yet saved in the CV TAB. This means that if you just want to abandon the process and leave everything as it was before, simply turn the ARPIE off and back on again now and close this page.<br><br>
+</td></tr>
+<tr><td><input type='button' value="OK... let's DO this thing!" onclick='javascript:onClickCommit();');></td></tr>
+</table>
+
+
+
+
+<script>
+var midi, data, testPoint = 0;
+var midiOutput = null;
+// start talking to MIDI controller
+if (navigator.requestMIDIAccess) {
+  navigator.requestMIDIAccess({
+	sysex: false
+  }).then(onMIDISuccess, onMIDIFailure);
+} else {
+  console.warn("No MIDI support in your browser")
+}
+
+// --------------------------------------------------------------------------
+// handler function for when MIDI is opened successfully
+function onMIDISuccess(midiData) {
+	// get a handle to the MIDI system interface
+	midi = midiData;  
+	
+	// populate combo with all the available MIDI output devices
+	for (let output of midi.outputs.values()) {
+	  var opt = document.createElement("option");
+	  opt.text = output.name;
+	  document.getElementById("midi-outputs").add(opt);
+	}    
+}
+
+// --------------------------------------------------------------------------
+// handler function for when MIDI is not supported
+function onMIDIFailure() {
+  alert("failed");
+  //TODO
+}
+
+
+// --------------------------------------------------------------------------
+// handler function for when the MIDI output device is changed
+function onSelectMidiOutput() {
+	let tag = document.getElementById("midi-outputs").value;
+	for (let output of midi.outputs.values()) {
+		if(output.name == tag) {
+			midiOutput = output;
+			return;
+		}
+	}  	
+	midiOutput = null;
+//TODO: bad	
+}
+document.getElementById("midi-outputs").onchange = onSelectMidiOutput;
+function sendMidiCC(channel, cc, value) {
+	if(midiOutput != null) {
+		midiOutput.send( [ 0xB0 | (channel-1), cc, value] );
+	}
+}
+
+
+function onClickCalibration(tag, delta) {
+	let current = document.getElementById(tag).textContent;
+	if(current == '*' || delta == 0) {
+		current = '0';
+	}
+	else {
+		current = parseInt(current) + delta;
+		if(current > 63 || current <= -63) {
+			return;
+		}
+	}
+	if(current >= 0) {
+		current = '+' + current;
+	}
+	document.getElementById(tag).textContent = current;
+	let value = parseInt(current) + 64;
+	switch(tag) {
+		case "scale-a": sendMidiCC(1, 70, value); break;
+		case "ofs-a": sendMidiCC(1, 71, value); break;
+	}
+	setTestPoint();
+}
+
+function setTestPoint() {
+	let note = 12*(testPoint + 2);
+	sendMidiCC(1, 72, note);
+}
+
+function onClickTestPoint(i) {
+	testPoint = i;
+	setTestPoint();
+}
+	
+	
+function onClickCommit() {
+	sendMidiCC(1, 73, 1);
+}
+
+</script>
+</body>
+</html>
