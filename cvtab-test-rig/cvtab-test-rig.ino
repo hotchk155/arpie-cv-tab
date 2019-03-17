@@ -8,7 +8,19 @@
 #define MV_ON   8100
 #define MV_OFF  5
 
-#define GAIN_CAL_CYCLES 5
+// parameters for the gain calibration process
+#define GAIN_CAL_BASE_NOTE  24
+#define GAIN_CAL_INTERVAL   12
+#define GAIN_CAL_INTERVAL_MV ((1000.0*(GAIN_CAL_INTERVAL))/12.0)
+#define GAIN_CAL_CYCLES     6
+
+// parameters for the offset calibration process
+#define OFS_CAL_BASE_NOTE  24
+#define OFS_CAL_INTERVAL   12
+#define OFS_CAL_BASE_MV ((1000.0*(OFS_CAL_BASE_NOTE-12))/12.0)
+#define OFS_CAL_INTERVAL_MV ((1000.0*(OFS_CAL_INTERVAL))/12.0)
+#define OFS_CAL_CYCLES     6
+
 #define OCTAVES 8
 
 #define MIDI_CC_NRPN_HI 		99
@@ -189,19 +201,15 @@ void setup() {
   Wire.write(0b0);
   Wire.endTransmission();
 
-  // configure DAC
-    Wire.beginTransmission(DAC_ADDR); 
-    Wire.write(0b10011001); // buffered Vref, powered up, 2x
-    Wire.endTransmission();       
   
 }
 
 
-int read_mv() {
+double read_mv() {
   unsigned result = ((int)Wire.read() << 8) | Wire.read();
   int q = result & 0x3FFF;
   if(result & 0x4000) {
-    return 0;
+    return 0.0;
   }
   else {
     return (q * 2 * 0.30518);
@@ -210,7 +218,7 @@ int read_mv() {
 
 
 // Fetch the voltage output for a note
-boolean read_inputs(int mv[]) {
+boolean read_inputs(double mv[]) {
 
   Wire.beginTransmission(I2C_ADDR);
   Wire.write(0x06);
@@ -246,7 +254,7 @@ void save_calibration()
 //  send_nrpn(NRPNH_GLOBAL, NRPNL_SAVE, 0, 0);
 }
 
-byte test_note(int note,int mv[]) {
+byte test_note(int note,double mv[]) {
   hhSetCV(note);
   delay(200);
   return read_inputs(mv);
@@ -254,165 +262,231 @@ byte test_note(int note,int mv[]) {
 
 
 
-/////////////////////////////////////////////////////////////////////////
-// GAIN CALIBRATION
-boolean calibrate_gain() 
+// Try a gain adjustment on a channel and return the mean error
+boolean try_gain_adjustment(int gain_adj, double& mean_error) 
 {
+ 
+  // set the requested gain adjustment
+  set_scale_adj(gain_adj);
+  set_ofs_adj(0);
 
-  int gain;
-  int mv[4];
-  int note;
-  int result;
-  int last_result=0;
-  int delta;
-  double delta_total;
-  double min_error;
-  int this_gain;
-  int i;
-
-
-  Serial.print("Calibrating gain on CV");
+  Serial.print("GAIN:");
+  Serial.print("trying ");
+  Serial.println(gain_adj);
   
-  // start from zero
-  gain = 0;
-  this_gain = 0;
-  min_error = 99999999;
+  // Scan through the required number of octaves
+  int note = GAIN_CAL_BASE_NOTE;
+  double delta_total = 0;
+  double delta = 0;
+  double last_result = 0;
+  for(int i=0; i<GAIN_CAL_CYCLES; ++i) {
+    double mv[4];
+    test_note(note,mv);
+    double result = mv[MV_CV];
+    Serial.print("GAIN:");
+    Serial.print("note ");
+    Serial.print(note, DEC);
+    Serial.print("->");
+    Serial.print(result);
+    if(i>0) {
+      // get difference between this and the last result
+      delta = result - last_result;
+      if(abs(GAIN_CAL_INTERVAL_MV-delta) > (GAIN_CAL_INTERVAL_MV/10)) {
+        Serial.print(" *** FAIL - OUT OF TOLERANCE ");
+        Serial.println(delta);
+        return false;
+      }
+      // subtract the expected 1000mV between octaves so that we get the 
+      // deviation from the expected difference
+      delta -= GAIN_CAL_INTERVAL_MV;
+      Serial.print(" diff ");
+      Serial.print(delta);
+
+      // total up all the deviations from expected
+      delta_total += delta;
+    }    
+    Serial.println("");
+    
+    // store last result
+    last_result = result;
+        
+
+    // ready for the next octave
+    note += GAIN_CAL_INTERVAL;
+    
+  }
+  
+  // get the mean deviation from 1V/octave across all octaves
+  delta_total /= (GAIN_CAL_CYCLES-1);
+  Serial.print("mean ");
+  Serial.println(delta_total);
+  mean_error = delta_total;  
+  return true;
+}
+
+//////////////////////////////////////////////////////////////////////////
+boolean gain_calibration() 
+{
+  double mean_error;
+  int gain_adj = 0;
+
+  Serial.print("GAIN:");
+  
+  // establish the initial gain adjustment
+  if(!try_gain_adjustment(0, mean_error)) 
+    return false;
+  gain_adj = 0.5 - 4.0 * mean_error;
+  if(gain_adj < -60 || gain_adj > 60) {
+    Serial.println("*** ERROR: OUT OF TOLERANCE ***");
+    return false;
+  }
+  Serial.print("initial adjustment ");
+  Serial.println(gain_adj);  
+
+  
+  double min_mean_error = 9999999;
+  int low_adj = gain_adj - 5;
+  int high_adj = gain_adj + 5;
+  low_adj = constrain(low_adj, -63, 63);
+  high_adj = constrain(high_adj, -63, 63);
   
   // multiple attempts to find the offset value which works best
-  for(int count = 0; count < GAIN_CAL_CYCLES; ++count) {
-    
-    Serial.print("try ");
-    Serial.println(this_gain);
-    // set the offset in CVOCD
-    set_scale_adj(this_gain);
-    set_ofs_adj(0);
-    
-    // prepare for scan through octaves
-    note = 24;
-    delta_total = 0;
-    delta = 0;
-    for(i=0; i<OCTAVES; ++i) {
-      if(!test_note(note,mv)) {
-        Serial.println("*** COMMS ERROR ***");
-      }
-      result = mv[MV_CV];
-      if(i>0) {
-        // get difference between this and the last result
-        delta = result - last_result;
-        if(delta < 800 || delta > 1200) {
-          Serial.print(" *** FAIL - OUT OF TOLERANCE ");
-          Serial.println(delta);
-          return false;
-        }
-        // subtract the expected 1000mV between octaves so that we get the 
-        // deviation from the expected difference
-        delta -= 1000.0;
-        
-        // total up all the deviations from expected
-        delta_total += delta;
-      }
-      
-      // store last result
-      last_result = result;
-      
-      // ready for the next octave
-      note += 12;
-      
-      Serial.print("C");
-      Serial.print(i+1, DEC);
-      Serial.print("->");
-      Serial.print(result);
-      Serial.print(" diff ");
-      Serial.println(delta);
-      //Serial.print(".");      
-    }
-    
-    // get the mean deviation from 1V/octave across all octaves
-    delta_total = (delta_total/(i-1));
-    Serial.print("mean ");
-    Serial.println(delta_total);
+  for(int this_adj = low_adj; this_adj <= high_adj; ++this_adj) {
+
+    if(!try_gain_adjustment(this_adj, mean_error)) 
+      return false;
     
     // is this the best one yet?
-    if(abs(delta_total) < min_error) {
-      min_error = abs(delta_total);
-      
-      // remember the gain value that 
-      gain = this_gain;
-      
-      Serial.println("STORED");
+    if(abs(mean_error) < abs(min_mean_error)) {
+      min_mean_error = mean_error;
+      gain_adj = this_adj;
+      Serial.println("    >>>> best result so far");
     }     
-
-    int gain_correction = 0.5 - 4.0 * delta_total; 
-    this_gain = constrain(gain_correction, -63, 63);  
   }
 
   // store best value
-  set_scale_adj(gain);
+  set_scale_adj(gain_adj);
   Serial.println("");
-  Serial.print("GAIN correction=");
-  Serial.println(gain);
-  return 1;
+  Serial.print("GAIN adjustment =");
+  Serial.print(gain_adj);
+  Serial.print(" with mean error of ");
+  Serial.println(min_mean_error);
+  return true;
 }
 
-
-
-/////////////////////////////////////////////////////////////////////////
-#define OFFSET_CAL_CYCLES 5
-boolean calibrate_offset() 
+//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+// OFFSET CALIBRATION ROUTINES
+//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
+boolean try_offset_adjustment(int offset_adj, double& mean_error) 
 {
-  int ofs;
-  int mv[4];
-  int note;
-  int expected;
-  int error;
-  double error_total;
-  double min_error;
-  int this_ofs;
-  int i;
+ 
+
+  Serial.print("OFS:");
+  Serial.print("Trying ");
+  Serial.println(offset_adj);
+  set_ofs_adj(offset_adj);
 
 
-  Serial.print("Calibrating offset on CV");
-  ofs = 0;
-  this_ofs = 0;
-  min_error = 99999999;
+  mean_error = 0;
+
+  int note = OFS_CAL_BASE_NOTE;
+  double expected_result = OFS_CAL_BASE_MV;
+  double this_error = 0;
+  for(int i=0; i<OFS_CAL_CYCLES; ++i) {
+    double mv[4];
+    test_note(note,mv);
+    double result = mv[MV_CV];
+    this_error = result - expected_result;
+    mean_error += this_error;
+    Serial.print("OFS:");
+    Serial.print("note ");
+    Serial.print(note, DEC);
+    Serial.print(" expected ");
+    Serial.print(expected_result);
+    Serial.print("->");
+    Serial.print(result);
+    Serial.print(" error ");
+    Serial.println(this_error);
+    //if(abs(this_error) > (OFS_CAL_INTERVAL_MV/5)) {
+    //    Serial.println(" *** FAIL - OUT OF TOLERANCE ");
+    //    return false;
+    //}
+
+    // ready for the next octave
+    note += OFS_CAL_INTERVAL;
+    expected_result += OFS_CAL_INTERVAL_MV;
+  }
+  mean_error /= OFS_CAL_CYCLES;
+  Serial.print("mean ");
+  Serial.println(mean_error);
+  return true;
+}
+
+
+//////////////////////////////////////////////////////////////////////////
+boolean offset_calibration() 
+{
+  double mean_error;
+  int ofs_adj = 0;
+
+  Serial.print("OFS:");
+  
+  // establish the initial gain adjustment
+  if(!try_offset_adjustment(0, mean_error)) 
+    return false;
+
+  // intial offset adjustment is (-e
+  ofs_adj = (int)(0.5 - mean_error);
+
+  double min_mean_error = 9999999999;
+  
+  if(mean_error < 0) { // voltages are too low
+    ofs_adj = (int)(fabs(mean_error/2)+0.5);
+  }
+  else {
+    ofs_adj = -(int)(fabs(mean_error/2)+0.5);
+  }
+  if(ofs_adj < -60 || ofs_adj > 60) {
+    Serial.println("*** ERROR: OUT OF TOLERANCE ***");
+    return false;
+  }
+  int low_adj = constrain(ofs_adj-3, -63, 63);
+  int high_adj = constrain(ofs_adj+3, -63, 63);
+  Serial.print("initial adjustment ");
+  Serial.println(ofs_adj);  
+
+  
+  
   // multiple attempts to find the offset value which works best
-  for(int count = 0; count < OFFSET_CAL_CYCLES; ++count) {
-    set_ofs_adj(this_ofs);
-    note = 24;
-    expected = 1000;
-    error_total = 0;
-    for(i=0; i<OCTAVES; ++i) {
-      if(!test_note(note,mv)) {
-        Serial.println("*** COMMS ERROR ***");
-        return false;
-      }      
-      error = expected - mv[MV_CV];
-      error_total += error;
-      expected += 1000;      
-      Serial.print(".");
-      note += 12;
-    }
+  for(int this_adj = low_adj; this_adj <= high_adj; ++this_adj) {
 
-    error_total = (error_total/i);
-    // one unit is 2mV
-    int ofs_correction = (0.5 + error_total/2.0);
-    ofs_correction = ofs_correction + ofs; // remember there is already an offset 
-    this_ofs = constrain(ofs_correction, -63, 63);  
-
-    if(abs(error_total) < min_error) {
-      // tracking best value
-      min_error = abs(error_total);
-      ofs = this_ofs;
+    if(!try_offset_adjustment(this_adj, mean_error)) 
+      return false;
+    
+    // is this the best one yet?
+    if(abs(mean_error) < abs(min_mean_error)) {
+      min_mean_error = mean_error;
+      ofs_adj = this_adj;
+      Serial.println("    >>>> best result so far");
     }     
   }
 
   // store best value
-  set_ofs_adj(ofs);
+  set_ofs_adj(ofs_adj);
   Serial.println("");
-  Serial.print("OFFSET correction = ");
-  Serial.println(ofs);
-  return true;    
+  Serial.print("OFFSET adjustment =");
+  Serial.print(ofs_adj);
+  Serial.print(" with mean error of ");
+  Serial.println(min_mean_error);
+  return true;
 }
+
 
 void octave_check() 
 {  
@@ -422,7 +496,7 @@ void octave_check()
   int i;
   double error_total = 0;
   int expected = 1000;
-  int mv[4] = {   0  };
+  double mv[4] = {   0  };
   
   Serial.print("Calibration check CV");
 
@@ -452,10 +526,10 @@ void octave_check()
 
 boolean calibrate() {
     octave_check();    
-    if(!calibrate_gain()) {
+    if(!gain_calibration()) {
         return false;
      }
-    if(!calibrate_offset()) {
+    if(!offset_calibration()) {
       return false;
     }
     octave_check();    
@@ -466,35 +540,63 @@ boolean calibrate() {
   Serial.print(" ");
   Serial.print("ofs ");
   Serial.print(hhCVCalOfs, DEC);
-  Serial.print(" ");
+  Serial.println(" ");
   return 1;
+}
+
+void pad(int val, int pad, boolean sign) {
+  int a = fabs(val);
+  if(a>=1000) pad -= 4;
+  else if(a>=100) pad -= 3;
+  else if(a>=10) pad -= 2;
+  else --pad;
+  if(sign) --pad;
+  while(pad-->0) {
+    Serial.print(" ");
+  }
+  if(sign && val>=0) {
+    Serial.print("+");    
+  }
+  Serial.print(val, DEC);
 }
 
 void scale_check() 
 {  
   // re-evaluate
-  int note = 24;
-  float expected = 1000;
-  int mv[4] = {   0  };
+  int note = 36;
+  double expected = 1000.0;
+  double mv[4] = {   0  };
   
-  Serial.println("Calibration check");
- 
-  while(note <= 110) {
-    if(!test_note(note,mv)) {
-      Serial.println("*** COMMS ERROR ***");
-    }
-    int e = (int)(0.5+expected);
-    Serial.print(note);
-    Serial.print("|");
-    Serial.print(e);
-    Serial.print("|");
-    Serial.print(mv[MV_CV]);
-    Serial.print("|");
-    Serial.print(mv[MV_CV]-e);
+  //Serial.println("Calibration check");
+  //all_notes_off();
+  //delay(1000);
+
+  double td0 = 0.0;
+  int readings = 0;
+  while(note <= 120) {
+    test_note(note,mv);
+
+    double d0 = mv[0]-expected;
+
+    td0 += d0;
+    ++readings;
+    
+    pad(note,3,false);
+    Serial.print(" | ");
+
+    Serial.print(expected);
+    Serial.print(" | ");
+    Serial.print(mv[0]);
+    Serial.print(" | ");
+    pad((int)(0.5+d0),5,true);
+
     Serial.println("");    
     expected += 1000.0/12.0;
     note ++;
   }
+  
+  Serial.print("CV error - mean ");  Serial.print(td0/readings); Serial.print(", total "); Serial.println(td0);
+  
 }
 
 byte TEST_memory() {
@@ -534,7 +636,7 @@ byte TEST_memory() {
 }
 
 byte TEST_gate() {
-  int mv[4];
+  double mv[4];
   Serial.print("TEST GATE");
   hhSetClock(0);
   hhSetGate(0);
@@ -568,7 +670,7 @@ byte TEST_gate() {
 }
 
 byte TEST_clock() {
-  int mv[4];
+  double mv[4];
   Serial.print("TEST CLOCK");
   hhSetClock(0);
   hhSetGate(0);
@@ -606,10 +708,19 @@ void loop() {
 
   digitalWrite(P_LED, HIGH);
   while(digitalRead(P_SWITCH));
-  if(TEST_memory() && TEST_clock() && TEST_gate()) {
-    calibrate();
-    hhCVCalSave();
-    scale_check();
+
+  // configure DAC
+  Wire.beginTransmission(DAC_ADDR); 
+  Wire.write(0b10011001); // buffered Vref, powered up, 2x
+  Wire.endTransmission();       
+  
+  if(TEST_clock() && TEST_gate()) {
+    if(calibrate()) {
+      if(TEST_memory()) {
+        hhCVCalSave();
+        Serial.println("SUCCESS");
+      }
+    }
   }
   
 /*  
