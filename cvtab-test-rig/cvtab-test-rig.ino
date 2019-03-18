@@ -1,5 +1,6 @@
 #include <Wire.h>
 
+#define ADC_CORRECTION (-2)
 
 #define MV_CV 2
 #define MV_CLOCK 0
@@ -212,7 +213,7 @@ double read_mv() {
     return 0.0;
   }
   else {
-    return (q * 2 * 0.30518);
+    return (q * 2 * 0.30518)+ADC_CORRECTION;
   }
 }
 
@@ -706,29 +707,8 @@ byte TEST_clock() {
 int d=0;
 void loop() {  
 
-  digitalWrite(P_LED, HIGH);
-  while(digitalRead(P_SWITCH));
-
-  // configure DAC
-  Wire.beginTransmission(DAC_ADDR); 
-  Wire.write(0b10011001); // buffered Vref, powered up, 2x
-  Wire.endTransmission();       
-  
-  if(TEST_clock() && TEST_gate()) {
-    if(calibrate()) {
-      if(TEST_memory()) {
-        hhCVCalSave();
-        Serial.println("SUCCESS");
-      }
-    }
-  }
-  
-/*  
-  if(d>4095) d=0; else d+=100;
-  //hhSetDAC(d);
-  delay(100);
-  int mv[4];
-  digitalWrite(P_HH_CVTAB_GATE, digitalRead(P_SWITCH));
+#if 0
+  double mv[4];
   if(read_inputs(mv))
   {
     Serial.print(mv[0],DEC);
@@ -739,7 +719,31 @@ void loop() {
     Serial.print(",");
     Serial.print(mv[3],DEC);    
     Serial.println(".");
-  }  */
+  }  
+  delay(100);
+#else
+  digitalWrite(P_LED, HIGH);
+  while(digitalRead(P_SWITCH));
+
+  // configure DAC
+  Wire.beginTransmission(DAC_ADDR); 
+  Wire.write(0b10011001); // buffered Vref, powered up, 2x
+  Wire.endTransmission();       
+  
+  if(TEST_clock() && TEST_gate()) {
+        hhSetGate(0);
+        hhSetClock(0);
+    if(calibrate()) {
+      if(TEST_memory()) {
+        hhCVCalSave();
+        hhSetGate(1);
+        hhSetClock(1);
+        Serial.println("SUCCESS");
+      }
+    }
+  }
+#endif 
+  
 }
 
 
