@@ -499,7 +499,7 @@ void octave_check()
   int expected = 1000;
   double mv[4] = {   0  };
   
-  Serial.print("Calibration check CV");
+  Serial.println("Calibration check CV");
 
   for(i=0; i<OCTAVES; ++i) {
     if(!test_note(note,mv)) {
@@ -509,17 +509,14 @@ void octave_check()
     error = mv[MV_CV] - expected;
     error_total += error;
 
-    Serial.print("C");
+    Serial.print("");
     Serial.print(i+1, DEC);
-    Serial.print("->");
+    Serial.print("|");
     Serial.print(mv[MV_CV], DEC);
-    Serial.print("mV");
-    Serial.print(" expected ");
+    Serial.print("|");
     Serial.print(expected);
-    Serial.print("mV");
-    Serial.print(" error ");
-    Serial.print(error);
-    Serial.println("mV");    
+    Serial.print("|");
+    Serial.println(error);
     expected += 1000;
     note += 12;
   }
@@ -733,8 +730,8 @@ void loop() {
   if(TEST_clock() && TEST_gate()) {
         hhSetGate(0);
         hhSetClock(0);
-    if(calibrate()) {
       if(TEST_memory()) {
+    if(calibrate()) {
         hhCVCalSave();
         hhSetGate(1);
         hhSetClock(1);
@@ -745,9 +742,3 @@ void loop() {
 #endif 
   
 }
-
-
-
-
-
-
