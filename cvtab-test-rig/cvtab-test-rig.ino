@@ -722,6 +722,7 @@ void loop() {
   digitalWrite(P_LED, HIGH);
   while(digitalRead(P_SWITCH));
 
+#if 1 // 1 for CVTAB 0 for MEMOTAB
   // configure DAC
   Wire.beginTransmission(DAC_ADDR); 
   Wire.write(0b10011001); // buffered Vref, powered up, 2x
@@ -739,6 +740,11 @@ void loop() {
       }
     }
   }
+#else
+      if(TEST_memory()) {
+        Serial.println("SUCCESS");
+      }
+#endif    
 #endif 
   
 }
